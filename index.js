@@ -34,7 +34,7 @@ app.get("/swagger.json", (req, res) => {
   });
   
   swaggerParser.validate()
-    .then(() => Sequelize.authenticate())
+    .then(() => Sexpresequelize.authenticate())
     .then(() =>
       app.listen(app.get("port"), () =>
         console.log(`API server now running on port ${app.get("port")}`)

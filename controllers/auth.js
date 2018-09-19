@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken')
 const {ExtractJwt} = require('passport-jwt')
 const Sequelize = require('sequelize')
 
-const router = express.Router();
+const router = expressyarn .Router();
 
 const { User } = require('../models')
 
