@@ -7,10 +7,10 @@ const swaggerUi = require('swagger-ui-express')
 const { Strategy } = require('passport-jwt')
 const swaggerParser = require('swagger-parser')
 const cors = require('cors')
-const { User, sequelize } = require("./Models")
-const jwt = require("jsonwebtoken");
+const { User, sequelize } = require("./models")
 const { ExtractJwt } = require("passport-jwt");
 const Sequelize = require("sequelize");
+const { jwtOptions, authMiddleware } = require('./controllers/auth')
 
 const app = express();
 
@@ -28,11 +28,12 @@ passport.use(
 
 app.use(passport.initialize())
 
+
 app.get("/swagger.json", (req, res) => {
     res.send(swaggerSpec);
   });
   
-  swaggerParser.validate(swaggerSpec)
+  swaggerParser.validate()
     .then(() => sequelize.authenticate())
     .then(() =>
       app.listen(app.get("port"), () =>
